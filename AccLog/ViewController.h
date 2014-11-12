@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface ViewController : UIViewController
-
+{
+    CMMotionManager *motionManager;
+    NSFileHandle *fileHandle;
+}
 
 @end
 

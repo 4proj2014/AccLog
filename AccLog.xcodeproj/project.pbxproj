@@ -14,6 +14,7 @@
 		2702797E1A1396FA00595898 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2702797D1A1396FA00595898 /* Images.xcassets */; };
 		270279811A1396FA00595898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2702797F1A1396FA00595898 /* LaunchScreen.xib */; };
 		2702798D1A1396FA00595898 /* AccLogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702798C1A1396FA00595898 /* AccLogTests.m */; };
+		270279971A13971D00595898 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270279961A13971D00595898 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		270279861A1396FA00595898 /* AccLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702798B1A1396FA00595898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2702798C1A1396FA00595898 /* AccLogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccLogTests.m; sourceTree = "<group>"; };
+		270279961A13971D00595898 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270279971A13971D00595898 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 		270279641A1396F900595898 = {
 			isa = PBXGroup;
 			children = (
+				270279961A13971D00595898 /* CoreMotion.framework */,
 				2702796F1A1396FA00595898 /* AccLog */,
 				270279891A1396FA00595898 /* AccLogTests */,
 				2702796E1A1396FA00595898 /* Products */,
@@ -344,6 +348,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AccLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -354,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AccLog/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
