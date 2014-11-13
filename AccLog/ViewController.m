@@ -19,8 +19,6 @@
     // Do any additional setup after loading the view, typically from a nib.
 
     NSLog(@"viewDidLoad");
-    CGRect f = messageOutput.frame;
-    NSLog(@"%f,%f,%f,%f",f.origin.x,f.origin.y,f.size.width,f.size.height);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -28,11 +26,6 @@
     [super viewWillAppear:animated];
 
     NSLog(@"viewWillAppear");
-    CGRect rect = CGRectMake(16, 94, 300, 300);
-    messageOutput.frame = rect;
-    CGRect f = messageOutput.frame;
-    NSLog(@"%f,%f,%f,%f",f.origin.x,f.origin.y,f.size.width,f.size.height);
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -128,7 +121,7 @@
                                length:line.length];
     [fileHandle writeData:linedata];
     [fileHandle synchronizeFile];
-    [self printlnMessage:line];
+    [self printMessage:line];
 }
 
 - (double)nowInUnixTime
@@ -175,13 +168,14 @@
 
 - (void)printlnMessage:(NSString *)message
 {
-    [messageOutput insertText:message];
-    [messageOutput insertText:@"\n"];
+    [self printMessage:message];
+    [self printMessage:@"\n"];
 }
 
 - (void)printMessage:(NSString *)message
 {
-    [messageOutput insertText:message];
+    // [messageOutput insertText:message];
+    messageOutput.text = [messageOutput.text stringByAppendingString:message];
 }
 
 @end
