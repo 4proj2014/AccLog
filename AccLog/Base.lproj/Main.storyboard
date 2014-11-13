@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +17,92 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LDr-AU-XRd">
+                                <rect key="frame" x="16" y="73" width="51" height="31"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="55" width="51" height="31"/>
+                                </variation>
+                                <connections>
+                                    <action selector="logStartStop:" destination="vXZ-lx-hvc" eventType="valueChanged" id="vN3-FO-kRM"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Logging" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cah-Ll-eKe">
+                                <rect key="frame" x="86" y="78" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="88" y="60" width="143" height="21"/>
+                                </variation>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkA-Mw-xPX">
+                                <rect key="frame" x="16" y="125" width="291" height="205"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="5HA-8F-Vh2"/>
+                                    <constraint firstAttribute="width" constant="300" id="A1P-oG-B5e"/>
+                                </constraints>
+                                <string key="text">AccLog
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5HA-8F-Vh2"/>
+                                        <exclude reference="A1P-oG-B5e"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="125" width="324" height="253"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5HA-8F-Vh2"/>
+                                        <include reference="A1P-oG-B5e"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vkA-Mw-xPX" firstAttribute="leading" secondItem="LDr-AU-XRd" secondAttribute="leading" id="5Kt-SU-BqB"/>
+                            <constraint firstItem="LDr-AU-XRd" firstAttribute="centerY" secondItem="cah-Ll-eKe" secondAttribute="centerY" id="ErY-qc-cXI"/>
+                            <constraint firstItem="cah-Ll-eKe" firstAttribute="leading" secondItem="LDr-AU-XRd" secondAttribute="trailing" constant="23" id="JDR-sP-c9V"/>
+                            <constraint firstItem="LDr-AU-XRd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="NbZ-Nz-7hs"/>
+                            <constraint firstItem="vkA-Mw-xPX" firstAttribute="top" secondItem="LDr-AU-XRd" secondAttribute="bottom" constant="8" symbolic="YES" id="iHq-hp-wZ8"/>
+                            <constraint firstItem="LDr-AU-XRd" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="35" id="k8a-67-wcH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ErY-qc-cXI"/>
+                                <exclude reference="NbZ-Nz-7hs"/>
+                                <exclude reference="k8a-67-wcH"/>
+                                <exclude reference="5Kt-SU-BqB"/>
+                                <exclude reference="iHq-hp-wZ8"/>
+                                <exclude reference="JDR-sP-c9V"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="ErY-qc-cXI"/>
+                                <include reference="NbZ-Nz-7hs"/>
+                                <include reference="k8a-67-wcH"/>
+                                <include reference="5Kt-SU-BqB"/>
+                                <include reference="iHq-hp-wZ8"/>
+                                <include reference="JDR-sP-c9V"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="loggingStatusLabel" destination="cah-Ll-eKe" id="8PD-EI-JHG"/>
+                        <outlet property="loggingSwitch" destination="LDr-AU-XRd" id="O1t-U6-BVH"/>
+                        <outlet property="messageOutput" destination="vkA-Mw-xPX" id="YeG-9D-Jv4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="388.5" y="273"/>
         </scene>
     </scenes>
 </document>

@@ -18,29 +18,68 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    [self openFile];
-    [self openAccelerometer];
+    NSLog(@"viewDidLoad");
+    CGRect f = messageOutput.frame;
+    NSLog(@"%f,%f,%f,%f",f.origin.x,f.origin.y,f.size.width,f.size.height);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    NSLog(@"viewWillAppear");
+    CGRect rect = CGRectMake(16, 94, 300, 300);
+    messageOutput.frame = rect;
+    CGRect f = messageOutput.frame;
+    NSLog(@"%f,%f,%f,%f",f.origin.x,f.origin.y,f.size.width,f.size.height);
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
 
-    [self closeAccelerometer];
-    [self closeFile];
+    NSLog(@"viewDidDisappear");
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)logStartStop:(id)sender {
+    if (loggingSwitch.on) {
+        [self printlnMessage:@"logging started"];
+        loggingStatusLabel.text = @"Logging";
+        [self openFile];
+        [self openAccelerometer];
+        NSLog(@"on");
+    } else {
+        loggingStatusLabel.text = @"No logging";
+        [self printlnMessage:@"logging stopped"];
+        [self closeAccelerometer];
+        [self closeFile];
+        NSLog(@"off");
+    }
 }
 
 - (void)openFile
 {
-    if (fileHandle) return;
+    //if (fileHandle) return;
 
     //NSString *homeDir = NSHomeDirectory();
     
+    /*
     // filepath = "Documents/data.txt"
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *DocumentsDirPath = [paths objectAtIndex:0];
     NSString *filePath = [DocumentsDirPath stringByAppendingPathComponent:@"data.txt"];
- 
+    */
+    
+    NSString *filePath = [self makeFilePathName];
+    NSLog(filePath);
+    [self printlnMessage:filePath];
     NSFileManager *fileManager = [NSFileManager defaultManager];
  
     // ファイルが存在しなければ空のファイルを作成
@@ -63,6 +102,20 @@
     [fileHandle seekToEndOfFile];
 }
 
+- (NSString*)makeFilePathName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *DocumentsDirPath = [paths objectAtIndex:0];
+    
+    NSDate *now = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd_HH-mm-ss-SSS";
+    NSString *nowStr = [dateFormatter stringFromDate:now];
+    NSString *fileName = [NSString stringWithFormat:@"data_%@.csv", nowStr];
+    NSString *filePath = [DocumentsDirPath stringByAppendingPathComponent:fileName];
+    return filePath;
+}
+
 - (void)writeData:(CMAccelerometerData*)data error:(NSError*)error
 {
     double now = [self nowInUnixTime];
@@ -75,6 +128,7 @@
                                length:line.length];
     [fileHandle writeData:linedata];
     [fileHandle synchronizeFile];
+    [self printlnMessage:line];
 }
 
 - (double)nowInUnixTime
@@ -119,9 +173,15 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)printlnMessage:(NSString *)message
+{
+    [messageOutput insertText:message];
+    [messageOutput insertText:@"\n"];
+}
+
+- (void)printMessage:(NSString *)message
+{
+    [messageOutput insertText:message];
 }
 
 @end

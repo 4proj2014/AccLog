@@ -418,6 +418,7 @@
 				270279921A1396FA00595898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		270279931A1396FA00595898 /* Build configuration list for PBXNativeTarget "AccLogTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				270279951A1396FA00595898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

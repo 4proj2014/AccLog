@@ -11,6 +11,9 @@
 
 @interface ViewController : UIViewController
 {
+    __weak IBOutlet UISwitch *loggingSwitch;
+    __weak IBOutlet UILabel *loggingStatusLabel;
+    __weak IBOutlet UITextView *messageOutput;
     CMMotionManager *motionManager;
     NSFileHandle *fileHandle;
 }
